@@ -22,6 +22,8 @@ def image_main():
 def image_check():
     images = []
 
+    count = 0
+
     r_url = req.form['url']
 
     driver.get(r_url)
@@ -42,14 +44,19 @@ def image_check():
 
     print(check_data)
 
-    return_data = False
+    state_data = False
 
     for i in check_data:
         if i == True:
-            return_data = True
-            break
+            state_data = True
+            count = count+1
 
     # driver.quit()
+
+    return_data = {
+        "check" : state_data,
+        "count" : count
+    }
 
     return jsonify(return_data)
 
