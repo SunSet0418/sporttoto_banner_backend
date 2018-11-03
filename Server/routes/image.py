@@ -26,6 +26,8 @@ def image_check():
 
     driver.get(r_url)
 
+    print("URL :",r_url)
+
     image_elements = driver.find_elements_by_tag_name('img')
 
     for element in image_elements:
@@ -36,12 +38,20 @@ def image_check():
 
     print(images)
 
-    for image in images:
-        utils.check_toto_banner(image)
+    check_data = utils.check_toto_banner(images)
+
+    print(check_data)
+
+    return_data = False
+
+    for i in check_data:
+        if i == True:
+            return_data = True
+            break
 
     # driver.quit()
 
-    return jsonify(images)
+    return jsonify({"check" : return_data})
 
 
 
