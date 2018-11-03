@@ -51,7 +51,7 @@ def image_check():
 
     # driver.quit()
 
-    return jsonify({"check" : return_data})
+    return jsonify(return_data)
 
 
 
